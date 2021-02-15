@@ -6,17 +6,17 @@ namespace MakarenkoSergey\GoogleFields;
 
 use Laravel\Nova\Fields\Field;
 
-class LocationField extends Field
+class ZipField extends Field
 {
     use DependsField;
 
-    protected $dependsAttribute = 'location';
+    protected $dependsAttribute = 'zip';
 
     /**
      * The field's component.
      *
      * @var string
      */
-    public $component = 'location-field';
+    public $component = 'general-depend-field';
 
 }

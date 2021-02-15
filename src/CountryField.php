@@ -1,13 +1,17 @@
-<?php
+<?
 
 
-namespace Makarenkosergey\GoogleFields;
+namespace MakarenkoSergey\GoogleFields;
 
 
-use Laravel\Nova\Fields\Field;
+use Laravel\Nova\Fields\BelongsTo;
 
-class CountryField extends Field
+class CountryField extends BelongsTo
 {
+    use DependsField;
+
+    protected $dependsAttribute = 'country';
+
     /**
      * The field's component.
      *

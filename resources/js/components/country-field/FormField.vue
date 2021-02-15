@@ -1,39 +1,43 @@
 <template>
-  <default-field :field="field" :errors="errors" :show-help-text="showHelpText">
-    <template slot="field">
-      <input
-        :id="field.name"
-        type="text"
-        class="w-full form-control form-input form-input-bordered"
-        :class="errorClasses"
-        :placeholder="field.name"
-        v-model="value"
-      />
-    </template>
-  </default-field>
+  <form-belongs-to-field
+    ref="belongs"
+    :shown-via-new-relation-modal="shownViaNewRelationModal"
+    :via-resource="viaResource"
+    :via-resource-id="viaResourceId"
+    :via-relationship="viaRelationship"
+    :show-help-text="showHelpText"
+    :field="field"
+    :resource-name="resourceName"
+    :resource-id="resourceId"
+    :errors="errors"
+  />
 </template>
 
 <script>
 import { FormField, HandlesValidationErrors } from 'laravel-nova'
+import DependFromAddress from '../../mixins/DependFromAddress'
 
 export default {
-  mixins: [FormField, HandlesValidationErrors],
+  mixins: [
+    FormField,
+    HandlesValidationErrors,
+    DependFromAddress,
+  ],
 
-  props: ['resourceName', 'resourceId', 'field'],
+  props: {
+    resourceId: {},
+  },
+
+  mounted () {
+    this.$refs.belongs.$watch('selectedResourceId', (value) => {
+      this.value = value
+    })
+    this.value = this.$refs.belongs.$data.selectedResourceId
+  },
 
   methods: {
-    /*
-     * Set the initial, internal value for the field.
-     */
-    setInitialValue() {
-      this.value = this.field.value || ''
-    },
-
-    /**
-     * Fill the given FormData object with the field's internal value.
-     */
-    fill(formData) {
-      formData.append(this.field.attribute, this.value || '')
+    setValue(value) {
+      this.$refs.belongs.$data.selectedResourceId = value
     },
   },
 }

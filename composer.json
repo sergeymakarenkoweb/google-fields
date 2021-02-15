@@ -11,13 +11,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Makarenkosergey\\GoogleFields\\": "src/"
+            "MakarenkoSergey\\GoogleFields\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Makarenkosergey\\GoogleFields\\FieldServiceProvider"
+                "MakarenkoSergey\\GoogleFields\\FieldServiceProvider"
             ]
         }
     },

@@ -1,6 +1,7 @@
 <template>
   <default-field :field="field" :errors="errors" :show-help-text="showHelpText">
     <template slot="field">
+      <div class="flex">
       <input
         :id="field.name"
         type="text"
@@ -9,15 +10,20 @@
         :placeholder="field.name"
         v-model="value"
       />
+        <button v-if="isUpdated"
+                @click.prevent="refresh"
+                class="btn btn-default btn-primary ml-3 cursor-pointer font-sans">Refresh</button>
+      </div>
     </template>
   </default-field>
 </template>
 
 <script>
 import { FormField, HandlesValidationErrors } from 'laravel-nova'
+import DependFromAddress from '../../mixins/DependFromAddress'
 
 export default {
-  mixins: [FormField, HandlesValidationErrors],
+  mixins: [FormField, HandlesValidationErrors, DependFromAddress],
 
   props: ['resourceName', 'resourceId', 'field'],
 

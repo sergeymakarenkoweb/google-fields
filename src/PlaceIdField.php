@@ -4,18 +4,13 @@
 namespace MakarenkoSergey\GoogleFields;
 
 
-
 use Laravel\Nova\Fields\Field;
 
-class CityField extends Field
+class PlaceIdField extends Field
 {
     use DependsField;
 
-    protected $dependsAttribute = 'city';
-    /**
-     * The field's component.
-     *
-     * @var string
-     */
+    protected $dependsAttribute = 'placeId';
+
     public $component = 'general-depend-field';
 }
