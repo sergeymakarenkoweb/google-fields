@@ -11,15 +11,19 @@ trait HasLocation
     public $longitudeColumn = 'longitude';
     public $latitudeColumn = 'latitude';
 
-    public function getLocationAttribute(): array
+    public function getLocationAttribute(): ?array
     {
         if ($this instanceof Model){
+            if (empty($this->getAttribute($this->longitudeColumn)) &&
+                empty($this->getAttribute($this->latitudeColumn))) {
+                return null;
+            }
             return [
                 'longitude' => $this->getAttribute($this->longitudeColumn),
                 'latitude' => $this->getAttribute($this->latitudeColumn),
             ];
         }
-        return [];
+        return null;
     }
 
     public function setLocationAttribute(string $value)

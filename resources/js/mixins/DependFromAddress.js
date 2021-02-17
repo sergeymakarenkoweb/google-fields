@@ -28,7 +28,7 @@ export default {
         if (this.componentIsDependency(component)) {
           const attribute = this.field['dependsAttribute']
           component.$watch(attribute, (value) => {
-            if (!this.isEmptyValue || !value) {
+            if ((!value || (!this.field.alwaysUpdate && !this.isEmpty()))) {
               if (!this.isEmptyValue
                 && this.value !== value
                 && !this.isEmpty(value)) {
@@ -37,7 +37,6 @@ export default {
               }
               return
             }
-            console.log({[attribute]: value})
             this.setValue(value)
           }, { immediate: true })
         }

@@ -85,6 +85,12 @@ export default {
         latitude: this.data.geometry.location.lat(),
         longitude: this.data.geometry.location.lng(),
       }
+    },
+    openingHours() {
+      if (!this.data) {
+        return null
+      }
+      return this.data.opening_hours.periods
     }
   },
   mounted () {

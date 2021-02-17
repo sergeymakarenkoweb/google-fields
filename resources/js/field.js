@@ -14,4 +14,8 @@ Nova.booting((Vue) => {
   Vue.component('index-general-depend-field', require('./components/general-depend-field/IndexField'))
   Vue.component('detail-general-depend-field', require('./components/general-depend-field/DetailField'))
   Vue.component('form-general-depend-field', require('./components/general-depend-field/FormField'))
+
+  Vue.component('index-opening-hours-field', require('./components/opening-hours-field/IndexField'))
+  Vue.component('detail-opening-hours-field', require('./components/opening-hours-field/DetailField'))
+  Vue.component('form-opening-hours-field', require('./components/opening-hours-field/FormField'))
 })
