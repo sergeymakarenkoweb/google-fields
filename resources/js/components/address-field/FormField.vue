@@ -87,11 +87,18 @@ export default {
       }
     },
     openingHours() {
-      if (!this.data) {
+      if (!this.data || !this.data.opening_hours) {
         return null
       }
       return this.data.opening_hours.periods
-    }
+    },
+    rating() {
+      if (!this.data) {
+        return null
+      }
+      console.log(this.data.rating)
+      return this.data.rating
+    },
   },
   mounted () {
     const options = {

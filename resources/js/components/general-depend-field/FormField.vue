@@ -4,7 +4,7 @@
       <div class="flex">
       <input
         :id="field.name"
-        type="text"
+        :type="getType"
         class="w-full form-control form-input form-input-bordered"
         :class="errorClasses"
         :placeholder="field.name"
@@ -40,6 +40,22 @@ export default {
      */
     fill(formData) {
       formData.append(this.field.attribute, this.value || '')
+    },
+
+    getValue(field) {
+      return this.field.hasOwnProperty(field) ? this.field[field] : 'text'
+    },
+    getType() {
+      return this.getValue('type')
+    },
+    getStep() {
+      return this.getValue('step')
+    },
+    getMin() {
+      return this.getValue('min')
+    },
+    getMax() {
+      return this.getValue('max')
     },
   },
 }
