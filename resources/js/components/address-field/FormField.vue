@@ -92,6 +92,12 @@ export default {
       }
       return this.data.opening_hours.periods
     },
+    totalReviews() {
+      if (!this.data) {
+        return null
+      }
+      return this.data.user_ratings_total
+    },
     rating() {
       if (!this.data) {
         return null
@@ -112,6 +118,7 @@ export default {
         'geometry',
         'place_id',
         'formatted_address',
+        'user_ratings_total',
         'address_components',
         'opening_hours.periods',
         'formatted_phone_number',
@@ -156,5 +163,3 @@ export default {
   },
 }
 </script>
-<style lang='sass'>
-</style>
