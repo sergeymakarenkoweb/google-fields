@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 trait HasPhone
 {
-    public function setPhoneAttribute(string $value)
+    public function setPhoneAttribute(?string $value)
     {
         if ($this instanceof Model) {
             $this->setAttribute('phones', explode(',', str_replace(', ', ',', $value)));
